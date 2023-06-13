@@ -56,6 +56,13 @@
   }
 }
 
+.search-title {
+  padding: 4px 12px;
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: rgba(16, 17, 22, 0.5);
+}
+
 .clear,
 .loading {
   position: absolute;
@@ -80,3 +87,8 @@
     background-color: rgba(22, 24, 35, 0.06);
   }
 }
+
+// .custom-login {
+//   color: red;
+//   background-color: aqua;
+// }

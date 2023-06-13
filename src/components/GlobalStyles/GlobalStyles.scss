@@ -9,7 +9,7 @@
 :root {
   --primary: #eb4263;
   --black: #333;
-
+  --white: #fff;
   --default-layout-header-height: 60px;
   --default-layout-width: 1150px;
 }
@@ -30,4 +30,8 @@ input,
 [tabindex] {
   border: none;
   outline: none;
+}
+
+a[href] {
+  text-decoration: none;
 }
