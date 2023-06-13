@@ -7,7 +7,9 @@
   box-sizing: border-box;
 }
 :root {
-  --primary: #fe2c55;
+  --primary: #eb4263;
+  --black: #333;
+
   --default-layout-header-height: 60px;
   --default-layout-width: 1150px;
 }
@@ -21,4 +23,11 @@ body {
   font-size: 1.6rem;
   line-height: 1.5;
   text-rendering: optimizeSpeed;
+}
+
+button,
+input,
+[tabindex] {
+  border: none;
+  outline: none;
 }
