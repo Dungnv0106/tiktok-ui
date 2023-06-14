@@ -12,7 +12,7 @@
 .inner {
   height: 100%;
   width: var(--default-layout-width);
-  // background-color: rgba(22, 24, 35, 0.06);
+  padding: 0 var(--default-layout-horizontal-spacer);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -101,6 +101,7 @@
   margin-left: 25px;
   padding: 4px 8px;
   background-color: transparent;
+  cursor: pointer;
 }
 
 // menu
