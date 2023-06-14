@@ -10,6 +10,7 @@
   --primary: #eb4263;
   --black: #333;
   --white: #fff;
+  --text-color: #161823;
   --default-layout-header-height: 60px;
   --default-layout-width: 1150px;
 }
@@ -33,5 +34,6 @@ input,
 }
 
 a[href] {
+  color: #1a1919;
   text-decoration: none;
 }

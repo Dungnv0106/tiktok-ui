@@ -19,6 +19,10 @@
 }
 .logo {
 }
+.search,
+.search-result {
+  width: 361px;
+}
 
 .search {
   position: relative;
@@ -92,3 +96,14 @@
 //   color: red;
 //   background-color: aqua;
 // }
+.more-btn {
+  font-size: 2rem;
+  margin-left: 25px;
+  padding: 4px 8px;
+  background-color: transparent;
+}
+
+// menu
+.menu-items {
+  width: 240px;
+}
