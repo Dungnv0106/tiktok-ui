@@ -91,6 +91,18 @@
     background-color: rgba(22, 24, 35, 0.06);
   }
 }
+//Action
+.action {
+  display: flex;
+  align-items: center;
+}
+.action-btn {
+  background-color: transparent;
+  font-size: 2.4rem;
+  // padding: 4px 15px;
+  margin-right: 20px;
+  cursor: pointer;
+}
 
 // .custom-login {
 //   color: red;
@@ -107,4 +119,13 @@
 // menu
 .menu-items {
   width: 240px;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  // object-fit: cover;
+  border-radius: 50%;
+  // margin-left: 12px;
+  cursor: pointer;
 }
