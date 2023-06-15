@@ -4,13 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCircleXmark,
   faSpinner,
-  faMagnifyingGlass,
   faSignIn,
   faEllipsisVertical,
   faEarthAsia,
   faCircleQuestion,
   faKeyboard,
-  faCloudUpload,
   faUser,
   faCoins,
   faGear,
@@ -26,6 +24,8 @@ import images from '~/assets/images';
 import AccountItem from '~/components/AccoutItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
+import { InboxIcon, MessageIcon, SearchIcon, UploadIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 
 // console.log(images.logo);
 const MENU_ITEMS = [
@@ -129,7 +129,7 @@ const Header = () => {
             <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
 
             <button className={cx('search-btn')}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
+              <SearchIcon />
             </button>
           </div>
         </HeadlessTippy>
@@ -138,7 +138,18 @@ const Header = () => {
             <div className={cx('current-user')}>
               <Tippy content="Upload video" placement="bottom" delay={[0, 200]}>
                 <button className={cx('action-btn')}>
-                  <FontAwesomeIcon icon={faCloudUpload} />
+                  <UploadIcon />
+                </button>
+              </Tippy>
+              <Tippy delay={[0, 50]} content="Message" placement="bottom">
+                <button className={cx('action-btn')}>
+                  <MessageIcon />
+                </button>
+              </Tippy>
+              <Tippy delay={[0, 50]} content="Inbox" placement="bottom">
+                <button className={cx('action-btn')}>
+                  <InboxIcon />
+                  <span className={cx('badge')}>12</span>
                 </button>
               </Tippy>
             </div>
@@ -152,7 +163,7 @@ const Header = () => {
           )}
           <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
             {currentUser ? (
-              <img src="https://picsum.photos/id/237/30/30" className={cx('user-avatar')} alt="VanA" />
+              <Image src="https://picsum.photos/id/237/30/30/" className={cx('user-avatar')} alt="VanA" />
             ) : (
               <button className={cx('more-btn')}>
                 <FontAwesomeIcon icon={faEllipsisVertical} />
