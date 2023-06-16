@@ -8,6 +8,7 @@ import AccountItem from '~/components/AccoutItem';
 import { SearchIcon } from '~/components/Icons';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
+import useDebounce from '~/hooks/useDebounce';
 const cx = classNames.bind(styles);
 
 const Search = () => {
@@ -16,6 +17,9 @@ const Search = () => {
 
   const [showResult, setShowResult] = useState(true);
   const [loading, setLoading] = useState(false);
+
+  const debounced = useDebounce(searchValue, 500);
+
   const inputRef = useRef();
   // Xóa dữ liệu ô input và kết quả tìm kiếm
   const handleClear = () => {
@@ -29,7 +33,7 @@ const Search = () => {
   };
   useEffect(() => {
     // encodeURIComponent: mã hóa dữ liệu người dùng nhập vào
-    if (!searchValue.trim()) {
+    if (!debounced.trim()) {
       setSearchResult([]);
       return;
     }
@@ -37,7 +41,7 @@ const Search = () => {
     // Trước khi gọi api thì loading là true
     setLoading(true);
 
-    fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+    fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
       .then((response) => response.json())
       .then((res) => {
         setSearchResult(res.data);
@@ -47,7 +51,7 @@ const Search = () => {
         console.log(err);
         setLoading(false);
       });
-  }, [searchValue]);
+  }, [debounced]);
   return (
     <HeadlessTippy
       interactive
