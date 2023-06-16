@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import classNames from 'classnames/bind';
 import HeadlessTippy from '@tippyjs/react/headless';
+
+import * as searchServices from '~/apiServices/searchService';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccoutItem';
 import { SearchIcon } from '~/components/Icons';
-import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import useDebounce from '~/hooks/useDebounce';
 const cx = classNames.bind(styles);
@@ -39,18 +40,33 @@ const Search = () => {
     }
 
     // Trước khi gọi api thì loading là true
-    setLoading(true);
+    // setLoading(true);
 
-    fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
-      .then((response) => response.json())
-      .then((res) => {
-        setSearchResult(res.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(false);
-      });
+    // request
+    //   .get(`users/search`, {
+    //     params: {
+    //       q: debounced,
+    //       type: 'less',
+    //     },
+    //   })
+    //   .then((res) => {
+    //     // console.log(res.data.data);
+    //     setSearchResult(res.data.data);
+    //     setLoading(false);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     setLoading(false);
+    //   });
+
+    const fetchApi = async () => {
+      setLoading(true);
+      const result = await searchServices.search(debounced);
+      // console.log(result);
+      setSearchResult(result);
+      setLoading(false);
+    };
+    fetchApi();
   }, [debounced]);
   return (
     <HeadlessTippy
