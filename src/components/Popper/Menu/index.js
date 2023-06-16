@@ -8,7 +8,7 @@ import Header from './Header';
 import { useState } from 'react';
 
 const cx = classNames.bind(styles);
-const Menu = ({ children, items = [], onChange }) => {
+const Menu = ({ children, items = [], hideOnClick = false, onChange }) => {
   const [history, setHistory] = useState([{ data: items }]);
   const current = history[history.length - 1]; // lấy phần tử cuối cùng của mảng để show ra giao diện
   // console.log(current.data);
@@ -34,6 +34,7 @@ const Menu = ({ children, items = [], onChange }) => {
     <Tippy
       offset={[12, 6]}
       delay={[200, 700]}
+      hideOnClick={hideOnClick}
       interactive
       placement="bottom-end"
       render={(attrs) => (

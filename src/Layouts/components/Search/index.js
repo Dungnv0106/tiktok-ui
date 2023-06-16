@@ -32,6 +32,14 @@ const Search = () => {
   const handleHideResult = () => {
     setShowResult(false);
   };
+
+  const handleChange = (e) => {
+    // Không cho nhập khoảng trắng đầu tiên
+    const inputValue = e.target.value;
+    if (!e.target.value.startsWith(' ')) {
+      setSearchValue(inputValue);
+    }
+  };
   useEffect(() => {
     // encodeURIComponent: mã hóa dữ liệu người dùng nhập vào
     if (!debounced.trim()) {
@@ -68,6 +76,10 @@ const Search = () => {
     };
     fetchApi();
   }, [debounced]);
+
+  // const handleSubmit = (e) => {
+
+  // }
   return (
     <HeadlessTippy
       interactive
@@ -89,12 +101,7 @@ const Search = () => {
           ref={inputRef}
           value={searchValue}
           placeholder="Search accounts and videos..."
-          onChange={(e) => {
-            // Không cho nhập khoảng trắng đầu tiên
-            if (!e.target.value.startsWith(' ')) {
-              setSearchValue(e.target.value);
-            }
-          }}
+          onChange={handleChange}
           onFocus={() => setShowResult(true)}
         />
         {!!searchValue && !loading && (
@@ -104,7 +111,7 @@ const Search = () => {
         )}
         {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
 
-        <button className={cx('search-btn')}>
+        <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
           <SearchIcon />
         </button>
       </div>
