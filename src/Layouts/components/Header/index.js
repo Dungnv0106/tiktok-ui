@@ -24,6 +24,7 @@ import { InboxIcon, MessageIcon, UploadIcon } from '~/components/Icons';
 import Image from '~/components/Image';
 import Search from '../Search';
 import routesConfig from '~/config/routes';
+import { Upload } from './Upload';
 
 // console.log(images.logo);
 const MENU_ITEMS = [
@@ -105,9 +106,10 @@ const Header = () => {
           {currentUser ? (
             <div className={cx('current-user')}>
               <Tippy content="Upload video" placement="bottom" delay={[0, 200]}>
-                <button className={cx('action-btn')}>
+                {/* <button className={cx('action-btn')} onClick={handleUpload}>
                   <UploadIcon />
-                </button>
+                </button> */}
+                <Upload/>
               </Tippy>
               <Tippy delay={[0, 50]} content="Message" placement="bottom">
                 <button className={cx('action-btn')}>
